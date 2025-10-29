@@ -10,3 +10,12 @@ html, body, #root {
   overflow-x: hidden;  /* horizontal scroll remove */
   overflow-y: auto;    /* vertical scroll allow */
 }
+
+/* Hide scrollbar for all browsers */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none; /* Firefox */
+}
