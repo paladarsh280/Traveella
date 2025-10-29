@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Facebook, Instagram, Github, Send, Grid3x3, ArrowUp, Search, MapPin, Mountain, Heart, Leaf, Backpack, CheckCircle } from "lucide-react";
 import heroMountains from "../images/planeMountain.png";
 import campfire from "../images/campfire.jpg";
@@ -10,9 +10,32 @@ import coTravelImg from "../images/coTravel.png";
 import trekkingImg from "../images/trekking.png";
 import traveella from "../images/traveellaSignup.png";
 import { useNavigate } from "react-router-dom";
-
-
+import Lenis from "@studio-freight/lenis";
+import HeroSection from "../components/HeroSection";
+import NavbarAfterloggedin from "../components/navbarafterloggedin";
+import SearchBar from "../components/SearchBar";
+import Offerings from "../components/Offerings";
+import BackPacking from "../components/BackPacking";
+import CoTravel from "../components/CoTravel";
+import LuxuriousTravel from "../components/LuxuriousTravel";
+import aeroplane from "../images/aeroplane.svg"
+import aeroplanebackward from "../images/aeroplanebackward.svg"
+import Footer from "../components/Footer";
 const AfterLoggedInPage = () => {
+  
+    // for smooth scrolling 
+    useEffect(() => {
+      const lenis = new Lenis({
+        duration: 1.2, // scroll speed
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth easing
+      });
+  
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    }, []);
   const offerings = [
     { title: "Backpacking", image: backpackingImg, className: "col-span-1 row-span-2" },
     { title: "Couples Trip", image: couplesTripImg, className: "col-span-1 row-span-1" },
@@ -113,107 +136,41 @@ const AfterLoggedInPage = () => {
   return (
     <div className="bg-background text-foreground overflow-y-auto">
       {/* Header */}
-      <header className="container mx-auto px-4 py-6 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="text-foreground">
-            <path d="M20 5 L25 15 L20 10 L15 15 Z" fill="currentColor" />
-            <rect x="18" y="15" width="4" height="15" fill="currentColor" />
-            <ellipse cx="20" cy="32" rx="8" ry="3" fill="currentColor" opacity="0.3" />
-          </svg>
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight">TRAVEELLA</h1>
-            <p className="text-[10px] text-accent uppercase tracking-widest">Travel Your Dreams Without Overthinking</p>
-          </div>
-        </div>
+     <NavbarAfterloggedin/>
 
-        <nav className="hidden md:flex items-center gap-1 bg-primary text-primary-foreground px-6 py-3 rounded-full">
-          <button className="px-6 py-2 rounded-full hover:bg-primary-foreground/10 transition-colors font-medium">
-            Home
-          </button>
-          <button className="px-6 py-2 rounded-full hover:bg-primary-foreground/10 transition-colors font-medium">
-            Blog
-          </button>
-          <button onClick={() => navigate("/aboutus")} className="px-6 py-2 rounded-full hover:bg-primary-foreground/10 transition-colors font-medium">
-            About Us
-          </button>
-        </nav>
-      </header>
-
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-12 md:py-20 relative">
-        <MapPin className="absolute left-12 top-8 w-16 h-16 text-foreground/10 animate-pulse" style={{ animationDuration: "3s" }} />
-        <Mountain className="absolute right-12 top-12 w-20 h-20 text-foreground/10 animate-pulse" style={{ animationDuration: "4s" }} />
-        
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h2 className="text-4xl md:text-6xl font-bold leading-tight">
-            FIND MORE, CHOOSE<br />SMARTER, WANDER FREELY
-          </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-            At Travella, we believe adventures don't need to be expensive. Discover breathtaking destinations, connect with like-minded travelers, and plan journeys that fit perfectly within your budget.
-          </p>
-
-          <div className="max-w-3xl mx-auto mt-8">
-            <div className="flex items-center gap-4 bg-card border-2 border-border rounded-full px-6 py-4 shadow-sm hover:shadow-md transition-shadow">
-              <Search className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-              <input
-                type="text"
-                placeholder="Search For Your Favorite Location"
-                className="flex-1 bg-transparent outline-none text-foreground placeholder:text-muted-foreground"
-              />
-              <button className="bg-primary text-primary-foreground px-8 py-2 rounded-full font-medium hover:opacity-90 transition-opacity">
-                Search
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="pt-[120px] px-4 sm:px-6 lg:px-16  max-w-6xl  mx-auto">
+ <HeroSection />
+      <div className="mt-6 w-full max-w-4xl mx-auto">
+                  <SearchBar />
+                </div>
+    </div>
 
       {/* Offerings */}
-      <section className="container mx-auto px-4 py-12 md:py-16">
-        <div className="flex items-center justify-between mb-8">
-          <h3 className="text-3xl md:text-4xl font-bold">Our Offerings</h3>
-          <button className="text-accent hover:underline font-medium">See all</button>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
-          {offerings.map((offering, index) => (
-            <div
-              key={index}
-              className={`${offering.className} relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300`}
-            >
-              <img
-                src={offering.image}
-                alt={offering.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <div className="absolute bottom-6 left-6 text-white">
-                <h4 className="text-xl md:text-2xl font-bold whitespace-pre-line">{offering.title}</h4>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Horizontal Scroll Sections */}
-      <div className="max-w-7xl mx-auto px-6 py-12 space-y-16">
-        {["Backpacking", "Luxurious Travel", "CO-Travel"].map((sectionTitle, idx) => (
-          <section key={idx}>
-            <h2 className="text-4xl font-bold mb-8">{sectionTitle}</h2>
-            <div className="relative">
-              <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
-                {tourCards.map((card, i) => (
-                  <TourCard key={`${sectionTitle}-${i}`} card={card} />
-                ))}
-              </div>
-              <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-background to-transparent pointer-events-none" />
-              <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none" />
-            </div>
-            {idx < 2 && <AirplanePath reverse={idx % 2 === 1} />}
-          </section>
-        ))}
-      </div>
-
+     <Offerings/>
+         <br className="gap-y-[80px]"></br>
+         <BackPacking/>
+                 <img
+                   src={aeroplane}
+                   alt="aeroplane icon"
+                   className="  mr-[70px]  max-w-6xl mx-auto h-[170px]
+                      sm:w-screen sm:h-[200px]
+                  md:w-screen md:h-[230px]
+               lg:w-screen lg:h-[250px]
+                  xl:w-screen xl:h-[300px] " 
+                 />
+    
+              <LuxuriousTravel/>
+                <img
+                   src={aeroplanebackward}
+                   alt="aeroplane icon"
+                   className="  mr-[70px]  max-w-6xl mx-auto h-[170px]
+                      sm:w-screen sm:h-[200px]
+                  md:w-screen md:h-[230px]
+               lg:w-screen lg:h-[250px]
+                  xl:w-screen xl:h-[300px] " 
+                 />
+                 <CoTravel/>
+                 
       <div className="min-h-screen bg-background text-foreground px-6 py-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -295,96 +252,7 @@ const AfterLoggedInPage = () => {
 
 
 
-       <footer className="relative bg-background border-t-4 border-secondary">
-  {/* Main Footer Content */}
-  <div className="bg-background py-12 px-6 md:px-12">
-    <div className="max-w-7xl mx-auto">
-      {/* Logo */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-        <div>
-          <div>
-            <img 
-              src={traveella} 
-              alt="Traveella Logo" 
-              className="w-40 h-auto" 
-            />
-          </div>
-
-          <p className="text-sm text-muted-foreground">
-            Travel made simple, affordable, and connected.
-          </p>
-        </div>
-
-        {/* Social Icons and Contact */}
-        <div className="flex items-center gap-6">
-          <div className="flex gap-4">
-            <a href="#" className="text-foreground hover:text-secondary transition-colors" aria-label="Facebook">
-              <Facebook className="w-5 h-5" />
-            </a>
-            <a href="#" className="text-foreground hover:text-secondary transition-colors" aria-label="Instagram">
-              <Instagram className="w-5 h-5" />
-            </a>
-            <a href="#" className="text-foreground hover:text-secondary transition-colors" aria-label="Github">
-              <Github className="w-5 h-5" />
-            </a>
-            <a href="#" className="text-foreground hover:text-secondary transition-colors" aria-label="Telegram">
-              <Send className="w-5 h-5" />
-            </a>
-            <a href="#" className="text-foreground hover:text-secondary transition-colors" aria-label="Grid">
-              <Grid3x3 className="w-5 h-5" />
-            </a>
-          </div>
-          <button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-2 font-medium">
-            Contact Us
-          </button>
-        </div>
-      </div>
-
-      {/* Footer Links */}
-      <nav className="flex flex-wrap gap-6 text-sm border-t pt-6">
-        <a href="#" className="text-foreground hover:text-secondary transition-colors">Privacy Policy</a>
-        <a href="#" className="text-foreground hover:text-secondary transition-colors">Terms of Use</a>
-        <a href="#" className="text-foreground hover:text-secondary transition-colors">Sales and Refunds</a>
-        <a href="#" className="text-foreground hover:text-secondary transition-colors">Legal</a>
-        <a href="#" className="text-foreground hover:text-secondary transition-colors">Site Map</a>
-      </nav>
-    </div>
-  </div>
-
-  {/* Wave Section */}
-  <div className="relative h-64 overflow-hidden">
-    <svg viewBox="0 0 1440 320" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-      <path
-        fill="hsl(var(--wave-gray))"
-        fillOpacity="0.3"
-        d="M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,128C672,107,768,85,864,90.7C960,96,1056,128,1152,133.3C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      ></path>
-      <path
-        fill="hsl(var(--footer-bg))"
-        fillOpacity="0.5"
-        d="M0,192L48,197.3C96,203,192,213,288,202.7C384,192,480,160,576,165.3C672,171,768,213,864,213.3C960,213,1056,171,1152,160C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      ></path>
-      <path
-        fill="hsl(var(--footer-dark))"
-        d="M0,256L48,240C96,224,192,192,288,181.3C384,171,480,181,576,197.3C672,213,768,235,864,218.7C960,203,1056,149,1152,133.3C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      ></path>
-    </svg>
-
-    {/* Copyright and Scroll to Top */}
-    <div className="absolute bottom-6 left-0 right-0 px-6 md:px-12 flex items-center justify-between max-w-7xl mx-auto">
-      <p className="text-white text-sm">© 2021 All Rights Reserved</p>
-      <button
-        onClick={scrollToTop}
-        className="rounded-full bg-white/10 border border-white/30 text-white hover:bg-white/20 hover:text-white p-2"
-        aria-label="Scroll to top"
-      >
-        <ArrowUp className="h-4 w-4" />
-      </button>
-    </div>
-  </div>
-</footer>
-
-
+<Footer/>
 
 
 

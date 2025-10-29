@@ -1,50 +1,48 @@
+
 import React from "react";
-import backpackingImg from '../images/backpacking.png'; 
-import coTravel from '../images/coTravel.png'; 
-import luxuriousTrip from '../images/luxuriousTrip.png'; 
-import soloTravel from '../images/soloTravel.png'; 
-import trekking from '../images/trekking.png'; 
-
-
-
-
-
-const offerings = [
-  { title: "Backpacking", img: "/images/backpacking.jpg" },
-  { title: "Couples Trip", img: "/images/couples.jpg" },
-  { title: "Luxurious Trips", img: "/images/luxury.jpg" },
-  { title: "Solo Travel", img: "/images/solo.jpg" },
-  { title: "Co-Travel with others", img: "/images/co-travel.jpg" },
-  { title: "Trekking", img: "/images/trekking.jpg" },
-];
+import backpackingImg from "../images/backpacking.png";
+import coTravel from "../images/coTravel.png";
+import luxuriousTrip from "../images/luxuriousTrip.png";
+import soloTravel from "../images/soloTravel.png";
+import trekking from "../images/trekking.png";
+import couplesTrip from "../images/couplesTrip.png";
 
 export default function Offerings() {
-  return (
-    <section className="max-w-6xl mx-auto mt-6 px-6">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Our Offerings</h2>
-        <button className="text-indigo-600 font-medium hover:underline">
-          See all
-        </button>
-      </div>
+  const offerings = [
+    { title: "Backpacking", image: backpackingImg, className: "col-span-1 row-span-2" },
+    { title: "Couples Trip", image: couplesTrip, className: "col-span-1 row-span-1" },
+    { title: "Luxurious Trips", image: luxuriousTrip, className: "col-span-2 row-span-1" },
+    { title: "Solo Travel", image: soloTravel, className: "col-span-1 row-span-1" },
+    { title: "Co-Travel\nwith others", image: coTravel, className: "col-span-1 row-span-1" },
+    { title: "Trekking", image: trekking, className: "col-span-1 row-span-1" },
+  ];
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-6">
-        {offerings.map((item, index) => (
-          <div
-            key={index}
-            className="rounded-2xl overflow-hidden shadow-md hover:scale-105 transition-transform duration-300"
-          >
-            <img
-              src={backpackingImg}
-              alt={item.title}
-              className="h-52 w-full object-cover"
-            />
-            <div className="absolute bottom-4 left-4 text-white font-semibold text-lg bg-black/40 px-3 py-1 rounded-md">
-              {item.title}
+
+  return (
+  <section className="container max-w-6xl mx-auto px-4 py-12 md:py-16">
+        <div className="flex items-center justify-between mb-8">
+          <h3 className="text-3xl md:text-4xl font-bold">Our Offerings</h3>
+          <button className="text-accent hover:underline font-medium">See all</button>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
+          {offerings.map((offering, index) => (
+            <div
+              key={index}
+              className={`${offering.className} relative rounded-3xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300`}
+            >
+              <img
+                src={offering.image}
+                alt={offering.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-6 left-6 text-white">
+                <h4 className="text-xl md:text-2xl font-bold whitespace-pre-line">{offering.title}</h4>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
   );
 }
