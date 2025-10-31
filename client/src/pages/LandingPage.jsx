@@ -1,3 +1,4 @@
+
 import React, { useRef,useEffect,useLayoutEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -40,7 +41,7 @@ export default function LandingPage() {
     });
   }, []);
   // for smooth scrolling 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const lenis = new Lenis({
       duration: 1.2, // scroll speed
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth easing
@@ -58,7 +59,7 @@ export default function LandingPage() {
   const ySecond = useTransform(scrollYProgress, [0, 0.6], ["100%", "0%"], { clamp: true });
 
   return (
-    <div ref={containerRef} className="relative min-h-[200vh] bg-black scroll-smooth overflow-x-hidden">
+    <div ref={containerRef} className="relative min-h-[200vh] bg-black  overflow-x-hidden">
       {/* === FIRST SECTION === */}
       <motion.div
         className="fixed top-0 left-0 flex flex-col items-center justify-center h-screen w-screen bg-cover bg-center bg-no-repeat z-10"
