@@ -36,67 +36,7 @@ const AfterLoggedInPage = () => {
       }
       requestAnimationFrame(raf);
     }, []);
-  const offerings = [
-    { title: "Backpacking", image: backpackingImg, className: "col-span-1 row-span-2" },
-    { title: "Couples Trip", image: couplesTripImg, className: "col-span-1 row-span-1" },
-    { title: "Luxurious Trips", image: luxuriousTripsImg, className: "col-span-2 row-span-1" },
-    { title: "Solo Travel", image: soloTravelImg, className: "col-span-1 row-span-1" },
-    { title: "Co-Travel\nwith others", image: coTravelImg, className: "col-span-1 row-span-1" },
-    { title: "Trekking", image: trekkingImg, className: "col-span-1 row-span-1" },
-  ];
-
-  const tourCards = [
-    {
-      image: backpackingImg,
-      duration: "4 days",
-      title: "Cartagena Tour - Guided Arizona",
-      subtitle: "Desert Tour by ATV",
-      price: "$1,249",
-    },
-    {
-      image: luxuriousTripsImg,
-      duration: "4 days",
-      title: "Cartagena Tour - Guided Arizona",
-      subtitle: "Desert Tour by ATV",
-      price: "$1,249",
-    },
-    {
-      image: coTravelImg,
-      duration: "4 days",
-      title: "Cartagena Tour - Guided Arizona",
-      subtitle: "Desert Tour by ATV",
-      price: "$1,249",
-    },
-    {
-      image: trekkingImg,
-      duration: "4 days",
-      title: "Cartagena Tour - Guided Arizona",
-      subtitle: "Desert Tour by ATV",
-      price: "$1,249",
-    },
-  ];
-
-  const TourCard = ({ card }) => (
-    <div className="group relative flex-shrink-0 w-[280px] h-[360px] rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2">
-      <img 
-        src={card.image} 
-        alt={card.title}
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-      <div className="absolute top-4 left-4 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm font-semibold">
-        {card.duration}
-      </div>
-      <button className="absolute top-4 right-4 w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center hover:bg-card transition-colors">
-        <Heart className="w-5 h-5 text-foreground" />
-      </button>
-      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-        <h3 className="text-lg font-bold mb-1">{card.title}</h3>
-        <p className="text-sm text-white/90 mb-2">{card.subtitle}</p>
-        <p className="text-xl font-bold">{card.price}</p>
-      </div>
-    </div>
-  );
+ 
 
   const AirplanePath = ({ reverse = false }) => (
     <div className={`relative w-full h-32 flex items-center ${reverse ? 'flex-row-reverse' : ''}`}>

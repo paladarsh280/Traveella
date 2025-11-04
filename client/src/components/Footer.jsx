@@ -6,7 +6,7 @@ export default function Footer(){
      const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
     return( 
         
-       <footer className=" max-w-6xl mx-auto relative bg-background border-t-4 border-secondary">
+       <footer className=" max-w-screen mx-auto relative bg-background border-t-4 border-secondary">
   {/* Main Footer Content */}
   <div className="bg-background py-12 px-[50px] md:px-[45px]">
     <div className="max-w-7xl mx-auto">

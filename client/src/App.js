@@ -11,7 +11,7 @@ import AfterLoggedInPage from "./pages/AfterLoggedInPage";
 import SignupWithPhoneOrEmail from "./pages/SignupWithPhoneOrEmail";
 import LandingPageOnScroll from "./pages/LandingPageOnScroll";
 
-
+import UserProfile from "./pages/UserProfile";
 
 
 function App() {
@@ -49,7 +49,7 @@ function App() {
 
         <Route path="/LandingPageOnScroll" element={<LandingPageOnScroll />} /> 
 
-        
+        <Route path="/userprofile" element={<UserProfile/>} />
 
       </Routes>
     </div>
