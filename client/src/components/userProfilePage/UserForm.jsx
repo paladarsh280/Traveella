@@ -1,5 +1,5 @@
 import React from "react";
-import bag from "../images/bag.svg";
+import bag from "../../images/bag.svg";
 
 export default function UserForm() {
     return (

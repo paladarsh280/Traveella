@@ -1,13 +1,13 @@
 import React from "react";
-import backpacker from "../images/BackPacker.png"
-import campfire from "../images/campfire.jpg";
-import backpackingImg from "../images/backpacking.png";
-import couplesTripImg from "../images/couplesTrip.png";
-import luxuriousTripsImg from "../images/luxuriousTrip.png";
-import soloTravelImg from "../images/soloTravel.png";
-import coTravelImg from "../images/coTravel.png";
-import trekkingImg from "../images/trekking.png";
-export default function LuxuriousTravel(){
+import backpacker from "../../images/BackPacker.png"
+import campfire from "../../images/campfire.jpg";
+import backpackingImg from "../../images/backpacking.png";
+import couplesTripImg from "../../images/couplesTrip.png";
+import luxuriousTripsImg from "../../images/luxuriousTrip.png";
+import soloTravelImg from "../../images/soloTravel.png";
+import coTravelImg from "../../images/coTravel.png";
+import trekkingImg from "../../images/trekking.png";
+export default function CoTravel(){
  const tourCards = [
     {
       image: backpackingImg,
@@ -63,7 +63,7 @@ export default function LuxuriousTravel(){
   return( 
        <section className="max-w-6xl mx-auto mt-16 px-6">
         <div className="max-w-7xl mx-auto px-6 py-12 space-y-16">
-        {["LuxuriousTravel"].map((sectionTitle, idx) => (
+        {["CoTravel"].map((sectionTitle, idx) => (
           <section key={idx}>
             <h2 className="text-4xl font-bold mb-8">{sectionTitle}</h2>
             <div className="relative">

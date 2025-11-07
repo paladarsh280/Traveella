@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function Login() {
-  const [activeTab, setActiveTab] = useState("user");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
@@ -15,7 +14,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:4000/api/users/login", {
+      const res = await axios.post("http://localhost:5000/api/users/login", {
         email: username,
         password,
       });
@@ -36,16 +35,16 @@ export default function Login() {
 
       {/* login card */}
       <div
-  className="
-    relative z-10
-    w-[85%] max-w-lg sm:max-w-xl lg:max-w-2xl
-    bg-white/80 backdrop-blur-xl 
-    rounded-2xl shadow-2xl
-    p-6 sm:p-8 md:p-10
-    flex flex-col items-center
-    max-h-[95vh] overflow-auto
-  "
->
+        className="
+          relative z-10
+          w-[85%] max-w-lg sm:max-w-xl lg:max-w-2xl
+          bg-white/80 backdrop-blur-xl 
+          rounded-2xl shadow-2xl
+          p-6 sm:p-8 md:p-10
+          flex flex-col items-center
+          max-h-[95vh] overflow-auto
+        "
+      >
         {/* logo */}
         <div className="flex justify-center mb-4 sm:mb-6">
           <img
@@ -53,32 +52,6 @@ export default function Login() {
             alt="Travel Logo"
             className="h-20 sm:h-28 md:h-32 lg:h-36 object-contain"
           />
-        </div>
-
-        {/* tabs */}
-        <div className="flex justify-center w-full mb-6">
-          <div className="flex bg-gray-100 rounded-full p-1 w-full max-w-xs shadow-inner">
-            <button
-              onClick={() => setActiveTab("user")}
-              className={`flex-1 px-4 py-2 rounded-l-full text-sm sm:text-base md:text-base font-semibold transition-colors ${
-                activeTab === "user"
-                  ? "bg-black text-white shadow"
-                  : "text-gray-800 hover:bg-gray-200"
-              }`}
-            >
-              User
-            </button>
-            <button
-              onClick={() => setActiveTab("admin")}
-              className={`flex-1 px-4 py-2 rounded-r-full text-sm sm:text-base md:text-base font-semibold transition-colors ${
-                activeTab === "admin"
-                  ? "bg-black text-white shadow"
-                  : "text-gray-800 hover:bg-gray-200"
-              }`}
-            >
-              Admin
-            </button>
-          </div>
         </div>
 
         {/* heading */}

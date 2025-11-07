@@ -1,7 +1,7 @@
 
 import React from "react";
-import book from "../images/book.svg";
-import mountain from "../images/mountain.svg";
+import book from "../../images/book.svg";
+import mountain from "../../images/mountain.svg";
 
 export default function HeroSection() {
   return (

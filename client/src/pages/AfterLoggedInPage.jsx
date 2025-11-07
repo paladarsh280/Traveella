@@ -11,16 +11,18 @@ import trekkingImg from "../images/trekking.png";
 import traveella from "../images/traveellaSignup.png";
 import { useNavigate } from "react-router-dom";
 import Lenis from "@studio-freight/lenis";
-import HeroSection from "../components/HeroSection";
-import NavbarAfterloggedin from "../components/navbarafterloggedin";
-import SearchBar from "../components/SearchBar";
-import Offerings from "../components/Offerings";
-import BackPacking from "../components/BackPacking";
-import CoTravel from "../components/CoTravel";
-import LuxuriousTravel from "../components/LuxuriousTravel";
+import HeroSection from "../components/afterBeforeCommon/HeroSection";
+import NavbarAfterloggedin from "../components/afterLoggedInPage/navbarafterloggedin";
+import SearchBar from "../components/afterBeforeCommon/SearchBar";
+import Offerings from "../components/afterBeforeCommon/Offerings";
+import BackPacking from "../components/afterBeforeCommon/BackPacking";
+import CoTravel from "../components/afterBeforeCommon/CoTravel";
+import LuxuriousTravel from "../components/afterBeforeCommon/LuxuriousTravel";
 import aeroplane from "../images/aeroplane.svg"
 import aeroplanebackward from "../images/aeroplanebackward.svg"
-import Footer from "../components/Footer";
+import Footer from "../components/common/Footer";
+import chooseTraveella from "../images/whyChoseTravella.png";
+
 const AfterLoggedInPage = () => {
   
     // for smooth scrolling 
@@ -111,82 +113,17 @@ const AfterLoggedInPage = () => {
                  />
                  <CoTravel/>
                  
-      <div className="min-h-screen bg-background text-foreground px-6 py-12">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <h1 className="text-5xl md:text-6xl font-bold mb-16">
-          Why choose Travella ?
-        </h1>
+     
 
-        {/* Hero Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {/* Left side - Illustration */}
-          <div className="bg-black rounded-[3rem] p-12 flex items-center justify-center relative overflow-hidden min-h-[400px]">
-            <img 
-              src={heroMountains} 
-              alt="Mountain landscape with traveler" 
-              className="w-full max-w-md object-contain"
-            />
-          </div>
 
-          {/* Right side - Campfire Image */}
-          <div className="rounded-[3rem] overflow-hidden min-h-[400px]">
-            <img 
-              src={campfire} 
-              alt="Group of travelers around campfire" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-
-        {/* Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Budget-Friendly Card */}
-          <div className="border-2 border-foreground rounded-[2.5rem] p-8 relative">
-            <div className="absolute top-8 left-8">
-              <Leaf className="w-12 h-12" strokeWidth={1.5} />
-            </div>
-            <div className="mt-20">
-              <h2 className="text-2xl font-bold mb-4">Budget-Friendly</h2>
-              <p className="text-sm leading-relaxed opacity-90">
-                Unlock adventures without breaking the bank. Enjoy group discounts, 
-                shared costs, and smart packages that keep every trip affordable and 
-                unforgettable.
-              </p>
-            </div>
-          </div>
-
-          {/* Travel Together Card */}
-          <div className="border-2 border-foreground rounded-[2.5rem] p-8 relative">
-            <div className="absolute top-8 right-8">
-              <Backpack className="w-12 h-12" strokeWidth={1.5} />
-            </div>
-            <div className="mt-20">
-              <h2 className="text-2xl font-bold mb-4">Travel Together</h2>
-              <p className="text-sm leading-relaxed opacity-90">
-                Meet like-minded explorers, build lasting friendships, and share 
-                unforgettable journeys that turn every trip into a story worth telling.
-              </p>
-            </div>
-          </div>
-
-          {/* Trusted Agents Card */}
-          <div className="border-2 border-foreground rounded-[2.5rem] p-8 relative">
-            <div className="absolute top-8 left-8">
-              <CheckCircle className="w-12 h-12" strokeWidth={1.5} />
-            </div>
-            <div className="mt-20">
-              <h2 className="text-2xl font-bold mb-4">Trusted Agents</h2>
-              <p className="text-sm leading-relaxed opacity-90">
-                Book with confidence through our network of verified and reliable 
-                partners, ensuring safe, seamless, and worry-free travel every time.
-              </p>
-            </div>
-          </div>
-        </div>
+{/* Footer Image */}
+      <div className="w-full mt-10 flex justify-center px-4 sm:px-8 lg:px-16">
+        <img
+          src={chooseTraveella}
+          alt="Why Choose Travella"
+          className="w-full max-w-[1200px] h-auto object-cover rounded-xl shadow-lg"
+        />
       </div>
-    </div>
-
 
 
 

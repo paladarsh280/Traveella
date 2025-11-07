@@ -6,11 +6,11 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:4000/api/users/auth/google/callback",
+      callbackURL: process.env.GOOGLE_CALLBACK_URL,
     },
     (accessToken, refreshToken, profile, done) => {
-      // yahan user ko DB me create ya find kar sakte ho
-      done(null, profile);
+      console.log("✅ Google Profile:", profile);
+      return done(null, profile);
     }
   )
 );
@@ -18,6 +18,7 @@ passport.use(
 passport.serializeUser((user, done) => {
   done(null, user);
 });
-passport.deserializeUser((obj, done) => {
-  done(null, obj);
+
+passport.deserializeUser((user, done) => {
+  done(null, user);
 });

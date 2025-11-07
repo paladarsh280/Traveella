@@ -10,8 +10,10 @@ import Login from "./pages/Login";
 import AfterLoggedInPage from "./pages/AfterLoggedInPage";
 import SignupWithPhoneOrEmail from "./pages/SignupWithPhoneOrEmail";
 import LandingPageOnScroll from "./pages/LandingPageOnScroll";
-
 import UserProfile from "./pages/UserProfile";
+import Blogs from "./pages/BlogsPage"
+import BlogsFull from "./pages/BlogsFull"
+import AboutUs from "./pages/AboutUs"
 
 
 function App() {
@@ -50,6 +52,14 @@ function App() {
         <Route path="/LandingPageOnScroll" element={<LandingPageOnScroll />} /> 
 
         <Route path="/userprofile" element={<UserProfile/>} />
+
+        
+        <Route path="/blogs" element={<Blogs/>} />
+
+        <Route path="/blogsfull" element={<BlogsFull/>} />
+
+         <Route path="/aboutus" element={<AboutUs/>} />
+        
 
       </Routes>
     </div>

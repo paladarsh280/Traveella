@@ -3,46 +3,49 @@ const express = require('express');
 const cors = require('cors');
 const passport = require('passport');
 const session = require('express-session');
-require('./config/passport'); // passport strategies
+require('./config/passport'); // Google strategy yahan se load hogi
 
 const app = express();
 
-// Import DB connection
+// ---------- Database Connection ---------- //
 const db = require('./config/database');
-
-// Connect to MongoDB
 db.connect();
 
-// Middlewares
+// ---------- Middlewares ---------- //
 app.use(
   cors({
-    origin: 'http://localhost:3000', // frontend origin
-    credentials: true,
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000', // frontend origin
+    credentials: true, // allow cookies and sessions
   })
 );
 
 app.use(express.json());
 
-// Session middleware (before passport)
+// ---------- Session Setup ---------- //
 app.use(
   session({
-    secret: 'keyboard cat', // prod me strong secret
+    secret: process.env.SESSION_SECRET || 'keyboard_cat_secret', // env secret use karna prod me
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false, // avoid unnecessary sessions
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // true if HTTPS in production
+      sameSite: 'lax', // important for Google OAuth
+    },
   })
 );
 
-// Passport middlewares
+// ---------- Passport Setup ---------- //
 app.use(passport.initialize());
-app.use(passport.session()); // enable passport session support
+app.use(passport.session());
 
-// Routes
+// ---------- Routes ---------- //
 const userRoutes = require('./routes/User');
-app.use('/api/users', userRoutes); // all user routes prefixed with /api/users
+app.use('/api/users', userRoutes);
 
-// Test route
+// ---------- Test Route ---------- //
 app.get('/', (req, res) => res.send('Traveella backend running'));
 
-// Start server
+// ---------- Start Server ---------- //
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

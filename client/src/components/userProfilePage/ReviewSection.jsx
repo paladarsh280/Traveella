@@ -1,6 +1,6 @@
 
 import React from "react";
-import review1 from "../images/review1.png";
+import review1 from "../../images/review1.png";
 export default function ReviewSection() {
     const reviewsData = [
         {

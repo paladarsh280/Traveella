@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import travel1 from "../images/traveellaSignup.png";
-export default function NavbarBeforeloggedin(){
+import travel1 from "../../images/traveellaSignup.png";
+import { CircleUser } from 'lucide-react';
+export default function NavbarAfterloggedin(){
       const navigate = useNavigate();
     return(
    <nav className="fixed  top-0 left-0 right-0 z-30 flex items-center justify-between px-4 sm:px-6 lg:px-16 py-3 bg-white shadow-md">
@@ -22,19 +23,10 @@ export default function NavbarBeforeloggedin(){
                ))}
              </div>
    
-             <div className="flex space-x-2 sm:space-x-3 text-xs sm:text-sm">
-               <button
-                 onClick={() => navigate("/signup")}
-                 className="hover:text-gray-400 transition-colors duration-200 px-3 py-1 font-bold"
-               >
-                 SIGNUP
-               </button>
-               <button
-                 onClick={() => navigate("/login")}
-                 className="border border-black px-4 bg-black text-white py-1 rounded-full hover:bg-white hover:text-black transition-all duration-200 font-extrabold"
-               >
-                 LOGIN
-               </button>
+             <div className="flex space-x-2 sm:space-x-3 text-xs sm:text-sm ">
+                 <a href="#" className="text-foreground hover:text-secondary transition-colors" aria-label="Profile">
+             <CircleUser className="w-5 h-5" />
+            </a>
              </div>
            </nav>
     );

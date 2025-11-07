@@ -1,18 +1,19 @@
 
 import React from 'react';
-import NavbarAfterloggedin from '../components/navbarafterloggedin';
+import NavbarAfterloggedin from '../components/afterLoggedInPage/navbarafterloggedin';
 import user_profileintro from '../images/user_profileintro.png';
 import user_profile from '../images/user_profile.png';
-import Footer from '../components/Footer.jsx';
-import UserForm from '../components/UserForm.jsx';
+import Footer from '../components/common/Footer.jsx';
+import UserForm from '../components/userProfilePage/UserForm.jsx';
 import curveline from '../images/curveline.png';
-import Recommendation from '../components/Recommendation.jsx';
+import Recommendation from '../components/afterBeforeCommon/Recommendation.jsx';
 import logout from "../images/logout.png";
 import ResetPassword from '../images/ResetPassword.png'
 import user_profileimg2 from '../images/user_profileimg2.png';
 import user_profileimg3 from '../images/user_profileimg3.png';
 import Envelopes from '../images/Envelopes.png';
-import ReviewSection from '../components/ReviewSection.jsx';
+import ReviewSection from '../components/userProfilePage/ReviewSection.jsx';
+import NewsletterAndReview from '../components/blogsFullPage/NewsLetterAndReview.jsx';
 export default function UserProfile() {
     return (
         // Root container: w-full aur overflow-x-hidden responsiveness ke liye zaroori hai
@@ -118,26 +119,8 @@ export default function UserProfile() {
                 <Recommendation />
             </div>
 
-            
-<div className='w-full max-w-5xl flex flex-col lg:flex-row gap-4 lg:gap-6'>
-    <div className='w-full lg:w-2/3 flex flex-col md:flex-row items-center justify-between bg-black p-6 md:p-8 lg:p-10 rounded-lg'>
-        <div className='flex-1 mb-6 md:mb-0 md:mr-6'>
-            <p className='text-xl md:text-2xl text-white font-bold font-[Figtree] mb-3'>Join my newsletter</p>
-            <p className='text-sm md:text-base text-white font-[Figtree] mb-5'>Receive fresh articles straight in your inbox, every Friday morning. I also share interesting finds from the internet!</p>
-            <div className='flex flex-col sm:flex-row gap-3 mb-3'>
-                <input 
-                    type="text" 
-                    placeholder='Enter your email' 
-                    className='h-10 flex-1 sm:max-w-72 rounded-lg px-3 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]'
-                />
-                <button className='h-10 w-full sm:w-32 bg-[#8B5CF6] text-white rounded-lg hover:bg-[#7C3AED] transition-colors'>Subscribe</button>
-            </div>
-            <p className='text-xs text-[#E2AD64]'>Weekly newsletter only. No spam, unsubscribe at any time.</p>
-        </div>
-        <img src={Envelopes} alt="Envelopes" className='w-32 md:w-40 lg:w-48 flex-shrink-0' />
-    </div>
-    <img src={user_profileimg3} alt="mountain in winter season" className='w-full lg:w-1/3 h-64 lg:h-auto object-cover rounded-lg' />
-</div>
+            <NewsletterAndReview/>
+
 <div className='m-8'> <ReviewSection/>
         </div>
                
