@@ -5,21 +5,25 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import chevron from "../images/chevron.png";
 import travel from "../images/traveellalogo.png";
 import travel1 from "../images/traveellaSignup.png";
-import HeroSection from "../components/HeroSection";
-import SearchBar from "../components/SearchBar";
+import HeroSection from "../components/afterBeforeCommon/HeroSection";
+import SearchBar from "../components/afterBeforeCommon/SearchBar";
 import landing from "../images/landingPageBg.jpg";
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { useGSAP } from '@gsap/react';
-import Offerings from "../components/Offerings";
-import BackPacking from "../components/BackPacking";
+import Offerings from "../components/afterBeforeCommon/Offerings";
+import BackPacking from "../components/afterBeforeCommon/BackPacking";
 import aeroplane from "../images/aeroplane.svg"
-import LuxuriousTravel from "../components/LuxuriousTravel"
+import LuxuriousTravel from "../components/afterBeforeCommon/LuxuriousTravel"
 import aeroplanebackward from "../images/aeroplanebackward.svg"
-import CoTravel from "../components/CoTravel";
-import Footer from "../components/Footer";
-import NavbarBeforeloggedin from "../components/navbarbeforeloggedin";
-import ArrowScrolldown from "../components/ArrowScrolldown";
+import CoTravel from "../components/afterBeforeCommon/CoTravel";
+import Footer from "../components/common/Footer";
+import NavbarBeforeloggedin from "../components/beforeLoggedInPage/navbarbeforeloggedin";
+import ArrowScrolldown from "../components/landingPage/ArrowScrolldown";
+import chooseTraveella from "../images/whyChoseTravella.png";
+
+
+
 export default function LandingPage() {
   const navigate = useNavigate();
   const containerRef = useRef(null);
@@ -206,6 +210,16 @@ export default function LandingPage() {
               xl:w-screen xl:h-[300px] " 
              />
              <CoTravel/>
+
+             {/* Footer Image */}
+                   <div className="w-full mt-10 flex justify-center px-4 sm:px-8 lg:px-16">
+                     <img
+                       src={chooseTraveella}
+                       alt="Why Choose Travella"
+                       className="w-full max-w-[1200px] h-auto object-cover rounded-xl shadow-lg"
+                     />
+                   </div>
+             
              <Footer/>
         </div>
       </motion.div>

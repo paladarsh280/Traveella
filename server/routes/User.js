@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { signup } = require("../controllers/Auth");
-const { login } = require("../controllers/Auth");
 const passport = require("passport");
+const { signup, login } = require("../controllers/Auth");
 
+// ---------- NORMAL AUTH ROUTES ---------- //
 
 // Signup route
 router.post("/signup", signup);
@@ -11,18 +11,25 @@ router.post("/signup", signup);
 // Login route
 router.post("/login", login);
 
+// ---------- GOOGLE AUTH ROUTES ---------- //
 
+// Start Google OAuth login
+router.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
 
-// Google login start
-router.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
-
-// Google login callback
+// Callback route after Google login
 router.get(
   "/auth/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login" }),
+  passport.authenticate("google", { failureRedirect: "/login", session: false }),
   (req, res) => {
-    // login success → redirect to frontend
-    res.redirect(`${process.env.FRONTEND_URL}/afterloggedinpage`); 
+    // Ye tab chalega jab Google se auth successful ho jaye
+    // Ab tu frontend pe redirect kar sakta hai with token
+    const token = req.user?.token; // tu ye token generate karega passport callback me (controller me)
+    const redirectUrl = `${process.env.FRONTEND_URL}/afterloggedinpage?token=${token}`;
+
+    res.redirect(redirectUrl);
   }
 );
 

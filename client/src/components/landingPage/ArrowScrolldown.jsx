@@ -1,5 +1,5 @@
 import React from "react";
-import chevron from "../images/chevron.png";
+import chevron from "../../images/chevron.png";
 export default function ArrowScrolldown(){
 return( 
     <>

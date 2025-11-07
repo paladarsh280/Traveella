@@ -1,11 +1,11 @@
 
 import React from "react";
-import backpackingImg from "../images/backpacking.png";
-import coTravel from "../images/coTravel.png";
-import luxuriousTrip from "../images/luxuriousTrip.png";
-import soloTravel from "../images/soloTravel.png";
-import trekking from "../images/trekking.png";
-import couplesTrip from "../images/couplesTrip.png";
+import backpackingImg from "../../images/backpacking.png";
+import coTravel from "../../images/coTravel.png";
+import luxuriousTrip from "../../images/luxuriousTrip.png";
+import soloTravel from "../../images/soloTravel.png";
+import trekking from "../../images/trekking.png";
+import couplesTrip from "../../images/couplesTrip.png";
 
 export default function Offerings() {
   const offerings = [
