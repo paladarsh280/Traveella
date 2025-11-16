@@ -1,16 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { User } from "lucide-react";
-import bgImg from "../../images/carImg.png"
-import Traveellalogo from "../../images/traveellalogo.png"; // your Traveella logo
+import { useParams } from "react-router-dom";
+import bgImg from "../../images/carImg.png";
+import Traveellalogo from "../../images/traveellalogo.png";
 
 const TopImage = () => {
+  const { id } = useParams();
+  const [article, setArticle] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/articles/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setArticle(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching article:", err);
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) {
+    return (
+      <section className="py-20 text-center text-gray-500">
+        Loading article...
+      </section>
+    );
+  }
+
+  if (!article) {
+    return (
+      <section className="py-20 text-center text-red-500">
+        Article not found.
+      </section>
+    );
+  }
+
   return (
     <section className="relative w-full min-h-screen bg-[#f9f9fb]">
-      {/* Background Image */}
+      {/* Top Background Image */}
       <div
         className="w-full h-[500px] bg-cover bg-center"
         style={{
-          backgroundImage: `url(${bgImg})`,
+          backgroundImage: `url(${article.img || bgImg})`,
         }}
       ></div>
 
@@ -35,11 +69,20 @@ const TopImage = () => {
         </div>
       </header>
 
-      {/* Lower Content Boxes */}
+      {/* Article Content */}
       <div className="relative -mt-32 flex justify-center items-start gap-6 px-10 z-20">
-        {/* Left Box */}
-        <div className="bg-gray-300 rounded-lg shadow-md w-[1100px] h-[650px]"></div>
-
+        <div className="bg-white rounded-lg shadow-md w-[1100px] min-h-[650px] p-10">
+          <h1 className="text-3xl font-bold mb-4">{article.title}</h1>
+          <div className="flex justify-between text-sm text-gray-600 mb-6">
+            <span className="text-[#ff5c00] font-semibold">
+              {article.author}
+            </span>
+            <span>{article.date}</span>
+          </div>
+          <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+            {article.content || article.desc}
+          </p>
+        </div>
       </div>
     </section>
   );

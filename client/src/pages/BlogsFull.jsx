@@ -1,7 +1,7 @@
 import React from "react";
 import Top from "../components/blogsFullPage/topImage";
 import Articles from "../components/blogsFullPage/recentArticles";
-import NewsLetter from "../components/blogsFullPage/NewsLetterAndReview"
+import NewsLetter from "../components/blogsPage/NewsLetterAndReview"
 import Footer from "../components/common/Footer"
 
 const BlogsPage = () => {

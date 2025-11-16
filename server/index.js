@@ -1,21 +1,28 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const passport = require('passport');
-const session = require('express-session');
-require('./config/passport'); // Google strategy yahan se load hogi
+// ---------- Imports ---------- //
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const passport = require("passport");
+const session = require("express-session");
 
+// ---------- Local Files ---------- //
+require("./config/passport");
+const db = require("./config/database");
+const tourRoutes = require("./routes/tour"); 
+const userRoutes = require("./routes/User");
+const articleRoutes = require("./routes/article");
+
+// ---------- App Setup ---------- //
 const app = express();
 
 // ---------- Database Connection ---------- //
-const db = require('./config/database');
 db.connect();
 
 // ---------- Middlewares ---------- //
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000', // frontend origin
-    credentials: true, // allow cookies and sessions
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    credentials: true,
   })
 );
 
@@ -24,28 +31,29 @@ app.use(express.json());
 // ---------- Session Setup ---------- //
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || 'keyboard_cat_secret', // env secret use karna prod me
+    secret: process.env.SESSION_SECRET || "keyboard_cat_secret",
     resave: false,
-    saveUninitialized: false, // avoid unnecessary sessions
+    saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // true if HTTPS in production
-      sameSite: 'lax', // important for Google OAuth
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
     },
   })
 );
 
-// ---------- Passport Setup ---------- //
+// ---------- Passport ---------- //
 app.use(passport.initialize());
 app.use(passport.session());
 
 // ---------- Routes ---------- //
-const userRoutes = require('./routes/User');
-app.use('/api/users', userRoutes);
+app.use("/api/tours", tourRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/articles", articleRoutes);
 
 // ---------- Test Route ---------- //
-app.get('/', (req, res) => res.send('Traveella backend running'));
+app.get("/", (req, res) => res.send("🚀 Traveella backend running successfully!"));
 
 // ---------- Start Server ---------- //
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
