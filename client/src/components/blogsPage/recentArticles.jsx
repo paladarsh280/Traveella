@@ -1,72 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-
-const articles = [
-  {
-    id: 1,
-    title: "belh snuhne ki kjdhiue bjd gifrgbjwb dfeifyekk huahi",
-    author: "author",
-    date: "14 Oct, 2025",
-    desc: "stay informed with our latest articles hdelhf ndxvhdniejdnfieh3r4",
-    img: "https://via.placeholder.com/300x200",
-  },
-  {
-    id: 2,
-    title: "belh snuhne ki kjdhiue bjd gifrgbjwb dfeifyekk huahi",
-    author: "author",
-    date: "14 Oct, 2025",
-    desc: "stay informed with our latest articles hdelhf ndxvhdniejdnfieh3r4",
-    img: "https://via.placeholder.com/300x200",
-  },
-  {
-    id: 3,
-    title: "belh snuhne ki kjdhiue bjd gifrgbjwb dfeifyekk huahi",
-    author: "author",
-    date: "14 Oct, 2025",
-    desc: "stay informed with our latest articles hdelhf ndxvhdniejdnfieh3r4",
-    img: "https://via.placeholder.com/300x200",
-  },
-  {
-    id: 4,
-    title: "belh snuhne ki kjdhiue bjd gifrgbjwb dfeifyekk huahi",
-    author: "author",
-    date: "14 Oct, 2025",
-    desc: "stay informed with our latest articles hdelhf ndxvhdniejdnfieh3r4",
-    img: "https://via.placeholder.com/300x200",
-  },
-  {
-    id: 5,
-    title: "belh snuhne ki kjdhiue bjd gifrgbjwb dfeifyekk huahi",
-    author: "author",
-    date: "14 Oct, 2025",
-    desc: "stay informed with our latest articles hdelhf ndxvhdniejdnfieh3r4",
-    img: "https://via.placeholder.com/300x200",
-  },
-  {
-    id: 6,
-    title: "belh snuhne ki kjdhiue bjd gifrgbjwb dfeifyekk huahi",
-    author: "author",
-    date: "14 Oct, 2025",
-    desc: "stay informed with our latest articles hdelhf ndxvhdniejdnfieh3r4",
-    img: "https://via.placeholder.com/300x200",
-  },
-];
+import { useNavigate } from "react-router-dom";
 
 const RecentArticles = () => {
+  const [articles, setArticles] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/articles")
+      .then((res) => res.json())
+      .then((data) => setArticles(data))
+      .catch((err) => console.log("Error fetching articles:", err));
+  }, []);
+
+  const handleReadMore = (id) => {
+    navigate(`/blogsfull/${id}`);
+  };
+
   return (
     <section className="bg-[#fafafa] py-12 px-6 md:px-16">
-      {/* Heading Row */}
       <div className="flex justify-between items-center mb-8">
         <div>
           <h2 className="text-xl md:text-2xl font-extrabold text-black">
             Our Recent Articles
           </h2>
-          <a
-            href="#"
-            className="text-sm text-[#457bff] underline mt-1 inline-block"
-          >
-            stay informed with our latest articles
-          </a>
+          <p className="text-sm text-[#457bff] underline mt-1 inline-block">
+            Stay informed with our latest articles
+          </p>
         </div>
 
         <div className="flex gap-2">
@@ -83,7 +43,7 @@ const RecentArticles = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {articles.map((article) => (
           <div
-            key={article.id}
+            key={article._id}
             className="bg-white rounded-md shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300"
           >
             <div className="h-[180px] bg-gray-300">
@@ -107,9 +67,12 @@ const RecentArticles = () => {
               </h3>
               <p className="text-sm text-gray-600 mb-3">{article.desc}</p>
 
-              <a href="#" className="text-[#457bff] font-semibold text-sm">
-                Read More
-              </a>
+              <button
+                onClick={() => handleReadMore(article._id)}
+                className="text-[#457bff] font-semibold text-sm"
+              >
+                Read More →
+              </button>
             </div>
           </div>
         ))}

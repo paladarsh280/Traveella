@@ -1,9 +1,12 @@
 import React from "react";
 import { User } from "lucide-react";
-import bgImg from "../../images/carImg.png"
+import { useNavigate } from "react-router-dom"; // ✅ navigation hook import
+import bgImg from "../../images/carImg.png";
 import Traveellalogo from "../../images/traveellalogo.png"; // your Traveella logo
 
 const TopImage = () => {
+  const navigate = useNavigate(); // ✅ initialize navigate
+
   return (
     <section className="relative w-full min-h-screen bg-[#f9f9fb]">
       {/* Background Image */}
@@ -19,15 +22,24 @@ const TopImage = () => {
         <img src={Traveellalogo} alt="Traveella Logo" className="h-10 w-auto" />
 
         <nav className="flex items-center gap-6 bg-black text-white px-6 py-2 rounded-full text-sm font-semibold">
-          <a href="#" className="hover:text-[#d6b97b] transition">
+          <button
+            onClick={() => navigate("/discover")}
+            className="hover:text-[#d6b97b] transition"
+          >
             Discovery
-          </a>
-          <a href="#" className="hover:text-[#d6b97b] transition">
+          </button>
+          <button
+            onClick={() => navigate("/blogs")}
+            className="hover:text-[#d6b97b] transition"
+          >
             Blogs
-          </a>
-          <a href="#" className="hover:text-[#d6b97b] transition">
+          </button>
+          <button
+            onClick={() => navigate("/aboutus")}
+            className="hover:text-[#d6b97b] transition"
+          >
             About Us
-          </a>
+          </button>
         </nav>
 
         <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white">
