@@ -14,6 +14,7 @@ import UserProfile from "./pages/UserProfile";
 import Blogs from "./pages/BlogsPage";
 import BlogsFull from "./pages/BlogsFull";
 import AboutUs from "./pages/AboutUs";
+import PaymentPage from "./pages/PaymentPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +60,9 @@ function App() {
 
         {/* About Us Page */}
         <Route path="/aboutus" element={<AboutUs />} />
+        
+        {/* Payment Page */}
+        <Route path="/payment" element={<PaymentPage />} /> 
         
       </Routes>
     </div>
