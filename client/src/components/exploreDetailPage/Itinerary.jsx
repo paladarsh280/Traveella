@@ -16,13 +16,13 @@ export default function Itinerary() {
   ];
 
   return (
-    <div className="w-full px-10 py-10">
-      <h2 className="text-[24px] font-bold mb-6">Itinerary</h2>
+    <div className="w-full px-28 py-10"> {/* ← Right shift matches previous section */}
+      <h2 className="text-[32px] font-bold mb-6">Itinerary</h2>
 
-      <div className="relative border-l-2 border-dotted border-gray-300 ml-4">
+      <div className="relative border-l-2 border-dotted border-gray-300 ml-6">
 
         {items.map((item, index) => (
-          <div key={index} className="mb-6 ml-6">
+          <div key={index} className="mb-10 ml-6">
 
             {/* Dot */}
             <span
@@ -33,11 +33,11 @@ export default function Itinerary() {
             ></span>
 
             {/* Day Title */}
-            <p className="text-[15px] text-gray-900 font-medium">{item.day}</p>
+            <p className="text-[17px] text-gray-900 font-semibold">{item.day}</p>
 
             {/* Optional Description */}
             {item.desc && (
-              <p className="text-[14px] text-gray-700 mt-2 leading-relaxed max-w-xl">
+              <p className="text-[15px] text-gray-700 mt-2 leading-relaxed max-w-xl">
                 {item.desc}
               </p>
             )}
