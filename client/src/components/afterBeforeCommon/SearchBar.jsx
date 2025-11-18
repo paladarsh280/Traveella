@@ -13,8 +13,6 @@ export default function SearchBar() {
           Search
         </button>
       </div>
-
-
     </div>
   );
 }

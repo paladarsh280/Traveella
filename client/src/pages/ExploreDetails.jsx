@@ -1,26 +1,43 @@
-import React from "react";
+import AvailabilityCalendar from "../components/exploreDetailPage/AvailabilityCalender";
+import NavbarBeforeloggedin from "../components/beforeLoggedInPage/navbarbeforeloggedin";
+import Footer from "../components/common/Footer";
+import CustomerReviews from "../components/exploreDetailPage/CustomerReview";
+import FaqPageForExplore from "../components/exploreDetailPage/FaqPageForDetailPage";
+import PaymentHeader from "../components/paymentPage/PaymentHeader";
+import Itinerary from "../components/exploreDetailPage/Itinerary";
+import TourDetailPage from "../components/exploreDetailPage/TouristDetailPage";
+import TourPage from "../components/exploreDetailPage/TourPage";
+import WhatsIncluded from "../components/exploreDetailPage/What'sIncluded";
+import PhotoGallery from "../components/exploreDetailPage/photoGallery";
+import SearchBar from "../components/exploreDetailPage/Search";
 
-export default function TourMap() {
-  return (
-    <div className="w-full px-10 py-12">
-      
-      {/* Heading */}
-      <h2 className="text-2xl font-bold text-[#0F172A] mb-6">
-        Tour Map
-      </h2>
+const ExploreDetails = () => {  
+    return (
+    <div className="w-full min-h-screen flex flex-col items-center bg-white">
+      <NavbarBeforeloggedin />
+      <PaymentHeader /> 
+        <SearchBar />
+        <PhotoGallery />
 
-      {/* Map Box */}
-      <div className="w-full max-w-5xl h-[500px] rounded-xl overflow-hidden shadow-md border">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12653767.63814504!2d-98.5!3d31.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1700000000000"
-          className="w-full h-full"
-          style={{ border: 0 }}
-          loading="lazy"
-          allowFullScreen=""
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
+        {/* Availability Calendar Section */}
+        <TourDetailPage />
+        
+        <WhatsIncluded />
 
+        <Itinerary />
+
+        <TourPage />
+
+        <AvailabilityCalendar />
+        {/* FAQ Section */}
+
+        <FaqPageForExplore />
+        {/* Customer Reviews Section */}
+        <CustomerReviews />
+        
+        <Footer />
     </div>
   );
-}
+};
+
+export default ExploreDetails;

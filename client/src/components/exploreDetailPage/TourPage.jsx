@@ -2,10 +2,10 @@ import React from "react";
 
 export default function TourMap() {
   return (
-    <div className="w-full px-10 py-12">
+    <div className="w-full px-28 py-12">  {/* ← Right shift same as others */}
       
       {/* Heading */}
-      <h2 className="text-2xl font-bold text-[#0F172A] mb-6">
+      <h2 className="text-[32px] font-bold text-[#0F172A] mb-6">
         Tour Map
       </h2>
 
